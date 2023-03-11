@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace API.Helper
+namespace Services.Helper
 {
     public static class HelperValidHex
     {

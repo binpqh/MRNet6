@@ -1,8 +1,8 @@
-﻿using API.Helper;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Services.Interfaces;
 using Services.Models;
+using Services.Responses;
 
 namespace API.Controllers
 {
@@ -11,26 +11,27 @@ namespace API.Controllers
     public class DepartmentController : ControllerBase
     {
         private readonly IDepartmentService _deptService;
-        public DepartmentController(IDepartmentService deptService)
+        private readonly ITeacherService _teacherrService;
+        public DepartmentController(IDepartmentService deptService, ITeacherService teacher)
         {
             _deptService = deptService;
+            _teacherrService = teacher;
         }
         [HttpGet]
-        public async Task<List<Department>> GetAllDepartmentAsync()
+        public async Task<List<DepartmentResponse>> GetAllDepartmentAsync()
         {
             return await _deptService.GetAllAsync();
         }
-        [HttpPost("id:string")]
-        public async Task<Department> GetById(string id)
+        [HttpGet]
+        [Route("Hihi")]
+        public async Task<List<TeacherResponse>> GetAllTeacherAsync()
         {
-            if(HelperValidHex.Check(id))
-            {
-                return await _deptService.GetByIdAsync(id);
-            }    
-            else
-            {
-                throw new Exception("Id không hợp lệ");
-            }    
+            return await _teacherrService.GetAllAsync();
+        }
+        [HttpPost("id:string")]
+        public async Task<DepartmentResponse> GetById(string id)
+        {
+            return await _deptService.GetByIdAsync(id);
         }
 
     }

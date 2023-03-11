@@ -16,7 +16,7 @@ namespace API.Config
             });
 
             //services.AddScoped<IStudentService, StudentService>();
-            //services.AddScoped<ITeacherService, TeacherService>();
+            services.AddScoped<ITeacherService, TeacherService>();
             //services.AddScoped<ISubjectService, SubjectService>();
             services.AddScoped<IDepartmentService, DepartmentService>();
             //services.AddScoped<IEnrollService, EnrollService>();

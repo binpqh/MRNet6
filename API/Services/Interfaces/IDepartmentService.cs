@@ -1,4 +1,5 @@
 ﻿using Services.Models;
+using Services.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,8 @@ namespace Services.Interfaces
 {
     public interface IDepartmentService
     {
-        Task<List<Department>> GetAllAsync();
-        Task<Department> GetByIdAsync(string id);
+        Task<List<DepartmentResponse>> GetAllAsync();
+        Task<DepartmentResponse> GetByIdAsync(string id);
 
     }
 }
