@@ -4,7 +4,7 @@ import { DeptDashboard } from '../page/department/dashboard'
 export const DeptRouter = () => {
   return (
     <Routes>
-        <Route path ="/" element={<DeptDashboard/>} />
+        <Route path ="/dept" element={<DeptDashboard/>} />
     </Routes>
   )
 }

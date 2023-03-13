@@ -14,3 +14,11 @@
 .App-link {
   color: #61dafb;
 }  */
+.ant-layout-sider {
+  background-color: #efcfda !important;
+}
+.ant-layout-sider-trigger {
+  color: #7c1639 !important;
+  border-radius: 35px;
+  background-color: #f2e6ea !important;
+}

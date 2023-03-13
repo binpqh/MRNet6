@@ -14,7 +14,7 @@ export const Sidebar = (props : Props) => {
   return (
     <Sider collapsible collapsed={props.collapsed} onCollapse={props.onToggleSidebar}>
       <div className="logo"></div>
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']}>
+      <Menu mode="inline" defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']}>
         <SubMenu key="sub1" title="Quản lý sinh viên" icon={<UserOutlined />}>
           <Menu.Item key="1"><Link to="/">Danh sách</Link></Menu.Item>
           <Menu.Item key="2"><Link to="/page2">Thêm</Link></Menu.Item>
