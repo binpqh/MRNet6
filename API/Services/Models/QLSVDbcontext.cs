@@ -11,7 +11,8 @@ namespace Services.Models
             var client = new MongoClient(connectionString);
             _database = client.GetDatabase(databaseName);
         }
-
+        public IMongoCollection<RefreshToken> RefreshTokens => _database.GetCollection<RefreshToken>("Token");
+        public IMongoCollection<Account> Accounts => _database.GetCollection<Account>("Account");
         public IMongoCollection<Student> Students => _database.GetCollection<Student>("Student");
         public IMongoCollection<Teacher> Teachers => _database.GetCollection<Teacher>("Teacher");
         public IMongoCollection<Subject> Subjects => _database.GetCollection<Subject>("Subject");

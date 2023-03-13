@@ -17,7 +17,6 @@ namespace Services.Models
             var client = new MongoClient(connectionString);
             _database = client.GetDatabase(databaseName);
         }
-
         public IMongoCollection<T> GetCollection<T>(string name)
         {
             return _database.GetCollection<T>(name);
