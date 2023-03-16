@@ -1,4 +1,5 @@
-﻿using Services.Responses;
+﻿using Services.Requests;
+using Services.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace Services.Interfaces
     public interface ITeacherService
     {
         Task<List<TeacherResponse>> GetAllAsync();
+        Task CreateteacherAsync(TeacherRequest teacher);
     }
 }

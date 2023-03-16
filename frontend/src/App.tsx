@@ -5,6 +5,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Sidebar } from './components/layout/Sidebar';
 import Login from './page/login';
 import './App.css';
+import { TeacherDashboard } from './page/teacher';
+import { CreateTeacher } from './page/teacher/create';
 const { Content, Footer } = Layout;
 
 const App: React.FC = () => {
@@ -38,6 +40,8 @@ const App: React.FC = () => {
               <div style={{ padding: 24, minHeight: 580, background: colorBgContainer }}>
                 <Routes>
                   <Route path='/' element={<DeptDashboard />} />
+                  <Route path='/listTeacher' element={<TeacherDashboard/>} />
+                  <Route path='/addTeacher' element={<CreateTeacher/>}/>
                   {/* Các Route khác nếu có */}
                 </Routes>
               </div>

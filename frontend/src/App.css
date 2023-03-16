@@ -22,3 +22,9 @@
   border-radius: 35px;
   background-color: #f2e6ea !important;
 }
+.ant-input{
+  max-width: 60%;
+}
+.ant-form {
+  font-size: 2rem !important;
+}

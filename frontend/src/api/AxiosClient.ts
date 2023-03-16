@@ -11,7 +11,7 @@ axiosClient.interceptors.response.use(
   (response: AxiosResponse) => response,
   (error) => {
     const { response } = error;
-    const errorMessage = response?.data?.message ?? 'Error';
+    const errorMessage = response?.data?.error_message ?? 'Error';
 
     console.log(errorMessage);
 

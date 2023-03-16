@@ -3,29 +3,26 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { ILogin } from '../../interfaces/ILogin';
+import { LoginAsync } from '../../services/Login.service';
 
 const Login = () => {
   const navigate = useNavigate();
-
-  const [loading, setLoading] = useState(false);
-
-  const onFinish = async (values: any) => {
-    // cái này demo thôi chứ phải bỏ phần const response = await axios.post('/api/login', values);
-    //   localStorage.setItem('token', response.data.token);
-    // qua Authe.Service.ts rồi qua đây lấy thg đó ra xài như dưới
-    setLoading(true);
-    try {
-      const response = await axios.post('/api/login', values);
-      localStorage.setItem('token', response.data.token);
-      const role = response.data.token;
+  const [loginRequest, setloginReq] = useState<ILogin>({username:'',password:''});
+  
+  const onFinish = async () => {
+  console.log(loginRequest);
+  
+      const response = await LoginAsync(loginRequest)
+      if ( !response.success) 
+      {}
+      localStorage.setItem('token', response.token);
+      const role = response.role;
     //   localStorage.setItem => là bỏ thông tin vào LOCAL STORAGE ở trình duyệt
+
       localStorage.setItem('role', role);
-      setLoading(false);
       navigate('/');
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
+   
   };
 
   return (
@@ -54,24 +51,21 @@ const Login = () => {
         <Form.Item
             name="username"
             rules={[{ required: true, message: 'Vui lòng điền thông tin!' }]}>
-            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Tài khoản" />
+            <Input onChange={(e) => {const a = loginRequest; a.username= e.target.value ; setloginReq(a)}} value={loginRequest.username} prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Tài khoản" />
         </Form.Item>
         <Form.Item
             name="password"
             rules={[{ required: true, message: 'Vui lòng điền thông tin!' }]}>
-            <Input.Password
+            <Input onChange={(e) => {const a = loginRequest; a.password= e.target.value ; setloginReq(a)}}
+            value={loginRequest.password}
             prefix={<LockOutlined className="site-form-item-icon" />}
             type="password"
             placeholder="Mật khẩu"
             />
         </Form.Item>
+
         <Form.Item>
-            <Form.Item name="remember" valuePropName="checked" noStyle>
-            <Checkbox>Nhớ đăng nhập</Checkbox>
-            </Form.Item>
-        </Form.Item>
-        <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-form-button" loading={loading}>
+            <Button type="primary" htmlType="submit" className="login-form-button" >
             Đăng nhập
             </Button>
         </Form.Item>

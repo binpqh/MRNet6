@@ -11,22 +11,14 @@ namespace API.Controllers
     public class DepartmentController : ControllerBase
     {
         private readonly IDepartmentService _deptService;
-        private readonly ITeacherService _teacherrService;
-        public DepartmentController(IDepartmentService deptService, ITeacherService teacher)
+        public DepartmentController(IDepartmentService deptService)
         {
             _deptService = deptService;
-            _teacherrService = teacher;
-        }
+        }   
         [HttpGet]
         public async Task<List<DepartmentResponse>> GetAllDepartmentAsync()
         {
             return await _deptService.GetAllAsync();
-        }
-        [HttpGet]
-        [Route("Hihi")]
-        public async Task<List<TeacherResponse>> GetAllTeacherAsync()
-        {
-            return await _teacherrService.GetAllAsync();
         }
         [HttpPost("id:string")]
         public async Task<DepartmentResponse> GetById(string id)

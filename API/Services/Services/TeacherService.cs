@@ -3,6 +3,7 @@ using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using Services.Interfaces;
 using Services.Models;
+using Services.Requests;
 using Services.Responses;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,11 @@ namespace Services.Services
     public class TeacherService : ITeacherService
     {
         private readonly IMongoCollection<Teacher> _teacherCollection;
-        private readonly IMongoCollection<Department> _departmentCollection;
+       
         public TeacherService(IMongoDbContext context)
         {
             _teacherCollection = context.GetCollection<Teacher>("Teacher");
-            _departmentCollection = context.GetCollection<Department>("Department");
+           
         }
 
         public async Task<List<TeacherResponse>> GetAllAsync()
@@ -35,6 +36,20 @@ namespace Services.Services
                     DepartmentName = t.Department.Name
                 }).ToListAsync();
             return listTeacher;
+        }
+
+        public async Task CreateteacherAsync(TeacherRequest teacher)
+        {
+
+            var teacherInsert = new Teacher
+            {
+                Name = teacher.name,
+                BirthDay = teacher.BirthDay,
+                Email = teacher.email,
+                Department = teacher.department,
+                PhoneNumber = teacher.PhoneNumber
+            };
+            await _teacherCollection.InsertOneAsync(teacherInsert);
         }
     }
 }

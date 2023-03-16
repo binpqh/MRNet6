@@ -20,8 +20,8 @@ export const Sidebar = (props : Props) => {
           <Menu.Item key="2"><Link to="/page2">Thêm</Link></Menu.Item>
         </SubMenu>
         <SubMenu key="sub2" title="Quản lý giáo viên" icon={<TeamOutlined />}>
-          <Menu.Item key="4"><Link to="/page4">Danh sách</Link></Menu.Item>
-          <Menu.Item key="5"><Link to="/page5">Thêm</Link></Menu.Item>
+          <Menu.Item key="4"><Link to="/listTeacher">Danh sách</Link></Menu.Item>
+          <Menu.Item key="5"><Link to="/addTeacher">Thêm</Link></Menu.Item>
         </SubMenu>
         <SubMenu key="sub3" title="Quản lý môn học" icon={<UserOutlined />}>
           <Menu.Item key="6"><Link to="/">Danh sách</Link></Menu.Item>
