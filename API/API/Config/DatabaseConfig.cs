@@ -20,11 +20,11 @@ namespace API.Config
             services.AddSingleton(new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration.GetSection("JWT:Secret").Value)));
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<ITokenService, TokenService>();
-            //services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<ITeacherService, TeacherService>();
-            //services.AddScoped<ISubjectService, SubjectService>();
+            services.AddScoped<ISubjectService, SubjectService>();
             services.AddScoped<IDepartmentService, DepartmentService>();
-            //services.AddScoped<IEnrollService, EnrollService>();
+            services.AddScoped<IEnrollService, EnrollService>();
             
         }
     }

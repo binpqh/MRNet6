@@ -7,6 +7,9 @@ import Login from './page/login';
 import './App.css';
 import { TeacherDashboard } from './page/teacher';
 import { CreateTeacher } from './page/teacher/create';
+import { GetAllStudent } from './services/Student.service';
+import { StudentDashboard } from './page/student';
+import { CreateNewStudent } from './page/student/Create';
 const { Content, Footer } = Layout;
 
 const App: React.FC = () => {
@@ -42,6 +45,8 @@ const App: React.FC = () => {
                   <Route path='/' element={<DeptDashboard />} />
                   <Route path='/listTeacher' element={<TeacherDashboard/>} />
                   <Route path='/addTeacher' element={<CreateTeacher/>}/>
+                  <Route path='/listStudent' element={< StudentDashboard />}/>
+                  <Route path='/addStudent' element={< CreateNewStudent />}/>
                   {/* Các Route khác nếu có */}
                 </Routes>
               </div>

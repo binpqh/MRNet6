@@ -1,4 +1,5 @@
-﻿using Services.Requests;
+﻿using Services.Models;
+using Services.Requests;
 using Services.Responses;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,9 @@ namespace Services.Interfaces
     public interface ITeacherService
     {
         Task<List<TeacherResponse>> GetAllAsync();
-        Task CreateteacherAsync(TeacherRequest teacher);
+        Task<TeacherResponse> GetAsync(string id);
+        Task CreateTeacherAsync(TeacherRequest teacher);
+        Task UpdateTeacherAsync(string id, Teacher teacher);
+        Task DeleteTeacherAsync(string id);
     }
 }

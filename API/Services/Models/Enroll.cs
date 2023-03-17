@@ -10,10 +10,18 @@ namespace Services.Models
 {
     public class Enroll
     {
-        public string Id { get; set; } = String.Empty;
-        public string StudentId { get; set; } = String.Empty;
-        public string SubjectId { get; set; } = String.Empty;
-        public virtual Student Student { get; set; } = null!;
-        public virtual Subject Subject { get; set; } = null!;
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public ObjectId Id { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)]
+        [BsonElement("idStudent")]
+        public ObjectId StudentId { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)]
+        [BsonElement("idSubject")]
+        public ObjectId SubjectId { get; set; }
+        [BsonElement("dateEnroll")]
+        public DateTime DateEnroll { get; set; }
+        [BsonElement("delete")]
+        public bool IsDelete { get; set; } = false;
     }
 }

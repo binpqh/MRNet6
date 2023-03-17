@@ -12,7 +12,7 @@ namespace Services.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; } = String.Empty;
+        public ObjectId Id { get; set; }
         [BsonElement("name")]
         public string Name { get; set; } = String.Empty;
         [BsonElement("birthday")]
@@ -21,6 +21,8 @@ namespace Services.Models
         public string PhoneNumber { get; set; } = String.Empty;
         [BsonElement("email")]
         public string Email { get; set; } = String.Empty;
+        [BsonElement("delete")]
+        public bool IsDelete { get; set; }
         [BsonElement("department")]
         public Dept Department { get; set; } = null!;
     }

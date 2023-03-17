@@ -10,11 +10,17 @@ namespace Services.Models
 {
     public class Subject
     {
-        public string Id { get; set; } = String.Empty;
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public ObjectId Id { get; set; }
+        [BsonElement("name")]
         public string Name { get; set; } = String.Empty;
+        [BsonElement("code")]
         public string Code { get; set; } = String.Empty;
-        public string TeacherId { get; set; } = String.Empty;
-
-        public virtual Teacher Teacher { get; set; } = null!;
+        [BsonElement("delete")]
+        public bool IsDelete { get; set; } = false;
+        [BsonElement("teacher")]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public ObjectId TeacherId { get; set; }
     }
 }

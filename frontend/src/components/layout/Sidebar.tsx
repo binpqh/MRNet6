@@ -16,8 +16,8 @@ export const Sidebar = (props : Props) => {
       <div className="logo"></div>
       <Menu mode="inline" defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']}>
         <SubMenu key="sub1" title="Quản lý sinh viên" icon={<UserOutlined />}>
-          <Menu.Item key="1"><Link to="/">Danh sách</Link></Menu.Item>
-          <Menu.Item key="2"><Link to="/page2">Thêm</Link></Menu.Item>
+          <Menu.Item key="1"><Link to="/listStudent">Danh sách</Link></Menu.Item>
+          <Menu.Item key="2"><Link to="/addStudent">Thêm</Link></Menu.Item>
         </SubMenu>
         <SubMenu key="sub2" title="Quản lý giáo viên" icon={<TeamOutlined />}>
           <Menu.Item key="4"><Link to="/listTeacher">Danh sách</Link></Menu.Item>
