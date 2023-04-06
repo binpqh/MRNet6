@@ -13,7 +13,7 @@ namespace Services.Interfaces
         Task<List<StudentResponse>> GetAllStudentAsync();
         Task<Student> GetStudentById(string id);
         Task AddStudent(Student student);
-        Task UpdateStudent(string id,Student student);
+        Task UpdateStudent(Student student);
         Task DeleteStudent(string id);
     }
 }

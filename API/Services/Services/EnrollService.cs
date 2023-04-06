@@ -48,7 +48,7 @@ namespace Services.Services
             var listRes = listEnroll.Select(e=> new EnrollRespone
             {
                 Id = e.Id.ToString(),
-                StudentName = _studentCollection.Find(s=>s.Id==e.StudentId).FirstOrDefault().Name,
+                StudentName = _studentCollection.Find(s=>s.Id==e.StudentId.ToString()).FirstOrDefault().Name,
                 SubjectName = _subjectCollection.Find(s => s.Id == e.SubjectId).FirstOrDefault().Name,
                 SubjectCode = _subjectCollection.Find(s => s.Id == e.SubjectId).FirstOrDefault().Code,
             }).ToList();
@@ -65,7 +65,7 @@ namespace Services.Services
             var res = listEnroll.Select(e => new EnrollRespone
             {
                 Id = e.Id.ToString(),
-                StudentName = _studentCollection.Find(s => s.Id == e.StudentId).FirstOrDefault().Name,
+                StudentName = _studentCollection.Find(s => s.Id == e.StudentId.ToString()).FirstOrDefault().Name,
                 SubjectName = _subjectCollection.Find(s => s.Id == e.SubjectId).FirstOrDefault().Name,
                 SubjectCode = _subjectCollection.Find(s => s.Id == e.SubjectId).FirstOrDefault().Code,
             }).FirstOrDefault();

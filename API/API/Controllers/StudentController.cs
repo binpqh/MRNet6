@@ -36,9 +36,9 @@ namespace API.Controllers
         }
         [HttpPut]
         [Route("Update")]
-        public async Task UpdateAsync(string id, Student student)
+        public async Task UpdateAsync(Student student)
         {
-            await _studentService.UpdateStudent(id, student);
+            await _studentService.UpdateStudent( student);
         }
         [HttpDelete]
         [Route("Delete")]

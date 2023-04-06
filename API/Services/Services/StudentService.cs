@@ -38,6 +38,7 @@ namespace Services.Services
                 Id = t.Id.ToString(),
                 Name = t.Name,
                 Age = t.Age,
+                Gender= t.Gender,
                 Email = t.Email,
                 Phone = t.Phone,
                 Address = t.Address,
@@ -58,10 +59,18 @@ namespace Services.Services
             return student;
         }
 
-        public async Task UpdateStudent(string id,Student student)
+        public async Task UpdateStudent(Student student)
         {
-            var filter = Builders<Student>.Filter.Eq(e => e.Id.ToString(), id);
-            var update = Builders<Student>.Update.Set(e => e, student);
+            var filter = Builders<Student>.Filter.Eq(e => e.Id,student.Id);
+            var update = Builders<Student>.Update
+                .Set(e => e.Name, student.Name)
+                .Set(e => e.Address, student.Address)
+                .Set(e => e.Major, student.Major)
+                .Set(e => e.Email, student.Email)
+                .Set(e => e.Age, student.Age)
+                .Set(e => e.Gender, student.Gender)
+                .Set(e => e.Phone, student.Phone)
+                ;
             await _studentCollection.UpdateOneAsync(filter, update);
         }
     }

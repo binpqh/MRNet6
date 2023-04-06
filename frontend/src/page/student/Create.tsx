@@ -1,9 +1,13 @@
-import { Await, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import { IStudent } from "../../interfaces/IStudent";
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Form, Input, message} from 'antd';
 import { CreateStudentAsync } from '../../services/Student.service';
 export const CreateNewStudent = () =>
 {
+    const handleSuccess =(text : string)=>
+    {
+        message.success(text,3);
+    }
     const navigate = useNavigate();
     const onFinish = async (values : IStudent) => 
     {
@@ -22,11 +26,14 @@ export const CreateNewStudent = () =>
         const reposn = await CreateStudentAsync(res)
         if (reposn!=null)
         {
-            navigate('/listStudent')
+           handleSuccess('Đăng kí thành công');
+           navigate('/listStudent');
         }
+      
     };
     const onFinishFailed = (errorInfo: any)=>
     {
+        
         console.log('failed',errorInfo);
     };
     return(
@@ -124,7 +131,7 @@ export const CreateNewStudent = () =>
             style={{ width: "100%" }}
         >
             <Input />
-        </Form.Item>
+        </Form.Item>            
         <Form.Item
         wrapperCol={{ offset: 15, span: 16 }}>
             <Button type="primary" htmlType="submit">
@@ -132,6 +139,7 @@ export const CreateNewStudent = () =>
             </Button>
         </Form.Item>
         </Form>
+ 
     </div>
         </>
     )

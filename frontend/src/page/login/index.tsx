@@ -1,28 +1,32 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import { ILogin } from '../../interfaces/ILogin';
 import { LoginAsync } from '../../services/Login.service';
+import { useNavigate } from 'react-router-dom';
+import { StilHere } from '../../components/Authenticated/StillHere';
 
 const Login = () => {
-  const navigate = useNavigate();
+  const stillhere = StilHere();
   const [loginRequest, setloginReq] = useState<ILogin>({username:'',password:''});
-  
+  const handleSuccess = (text : string) =>
+  {
+    message.success(text,3);
+  }
+  const navigate = useNavigate();
   const onFinish = async () => {
   console.log(loginRequest);
-  
       const response = await LoginAsync(loginRequest)
       if ( !response.success) 
-      {}
+      {
+        handleSuccess('Đăng nhập thất bại. kiểm tra tài khoản mật khẩu');
+      }
       localStorage.setItem('token', response.token);
       const role = response.role;
-    //   localStorage.setItem => là bỏ thông tin vào LOCAL STORAGE ở trình duyệt
-
       localStorage.setItem('role', role);
-      navigate('/');
-   
+      const text = 'Xin Chào '+ loginRequest.username.toString();
+      handleSuccess(text);  
+      navigate("/dashboard");
   };
 
   return (
@@ -71,7 +75,8 @@ const Login = () => {
         </Form.Item>
         </Form>
     </div>
-    </div>
+    </div>  
+
   );
 };
 
